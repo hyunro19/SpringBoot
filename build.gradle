@@ -1,0 +1,36 @@
+buildscript {
+    ext { // build.gradle에서 사용하는 전역변수 설정
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // spring-boot-gradle-plugin라는 스프링 부트 그레이들 플러그인의 2.7.1.RELEASE를 의존성으로 받겠다.
+    }
+}
+// 자바와 스프링부트를 사용하기 위한 필수 4개 플러그인(항상 추가해주어야 한다.)
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' // 스프링 부트의 의존성들을 관리해주는 플러그인.
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories { // 각종 의존성 (라이브러리)들을 어떤 원격 저장소에서 받을지를 결정.
+    mavenCentral() // 라이브러리 업로드 난이도가 높아, 최근에는 jcenter도 많이 사용.
+    jcenter() // 개발자 본인 라이브러리 업로드가 간단, 자동으로 mavenCentral()로의 업로드도 지원
+}
+
+dependencies { // 프로젝트 개발에 필요한 의존성들을 선언하는 곳
+    compile('org.springframework.boot:spring-boot-starter-web')
+    // 여기서는 라이브러리 버전을 명시하면 안된다. 명시하지 않아야 ext에서 선언한 버전을 따라간다.
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// 이렇게 관리할 경우 각 라이브러리들의 버전 관리가 한 곳에 집중되고,
+// 버전 충돌 문제도 해결되어 편하게 개발 진행 가능
