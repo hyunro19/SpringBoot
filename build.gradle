@@ -39,6 +39,9 @@ dependencies { // 프로젝트 개발에 필요한 의존성들을 선언하는 
     // 메모리에서 실행되기 때문에 애플리케이션을 재시작할 때마다 초기화 (그래서 테스트용으로 많이 사용)
     compile('com.h2database:h2')
 
+    // mustache starter 의존성
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+
     // 여기서는 라이브러리 버전을 명시하면 안된다. 명시하지 않아야 ext에서 선언한 버전을 따라간다.
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
