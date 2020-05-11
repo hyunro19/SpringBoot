@@ -18,17 +18,13 @@ cache:
 
 # 위에서 지정한 브랜치에 푸시되었을 때 실행할 명령어
 # 프로젝트 내부에 둔 gradlew를 통해 clean & build 수행
+
 script: "./gradlew clean build"
 
 before_deploy:
   - zip -r SpringBoot * # 현재 위치의 모든 파일을 해당 이름으로 압축, 명령어의 마지막 위치는 프로젝트 이름이어야 한다.
   - mkdir -p deploy # deploy라는 디렉토리를 TravisCI가 실행중인 위치에서 생성
-  - cd deploy
-  - cd ..
   - mv SpringBoot.zip deploy/SpringBoot.zip
-  - cd deploy
-  - ls
-  - cd ..
 
 # S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
 deploy:
@@ -37,7 +33,6 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
     bucket: hyunro19-springboot2-webservice
     region: ap-northeast-2
-    cleanup: true
     acl: private # zip 파일 접근을 private으로
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
