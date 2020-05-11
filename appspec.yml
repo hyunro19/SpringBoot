@@ -4,4 +4,15 @@ files:
   - source: / # S3경로
     destination: /home/ec2-user/app/step2/zip/ # EC2경로
     overwrite: yes
-    
+
+permissions: # CodeDeploy에서 EC2로 넘겨준 파일들을 모두 ec2-user권한을 갖도록 한다.
+  - object: /
+    pattern: "**"
+    owner: ec2-user
+    group: ec2-user
+
+hooks: # CodeDeploy 배포 단계에서 실행할 명령어를 지정
+  ApplicationStart:
+    - location: deploy.sh
+      timeout: 100 # 100초 이상 수행되면 실패
+      runas: ec2-user
