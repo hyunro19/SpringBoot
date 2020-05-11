@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // URL, HTTP메소드별로 관리 가능
                 // "/"등 지정돤 URL들은 permitAll()옵션을 통해 전체 열람 권한 부여
                 // POST메소드이면서 "/api/v1/**"주소를 가진 API는 USER권한을 가진 사람만 가능
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 // anyRequest는 설정되 값 외 나머지 -> 인증된 사용자에게만
                 .anyRequest().authenticated()
