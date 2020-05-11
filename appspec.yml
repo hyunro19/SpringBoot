@@ -4,3 +4,4 @@ files:
   - source: / # S3경로
     destination: /home/ec2-user/app/step2/zip/ # EC2경로
     overwrite: yes
+    
