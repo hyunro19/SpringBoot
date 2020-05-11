@@ -1,0 +1,6 @@
+version: 0.0 #CodeDeploy 버전, 0.0이 아니면 오류 발생
+os: linux
+files:
+  - source: / # S3경로
+    destination: home/ec2-user/app/step2/zip/ # EC2경로
+    overwrite: yes
