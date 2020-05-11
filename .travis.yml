@@ -17,7 +17,7 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r SpringBoot # 현재 위치의 모든 파일을 해당 이름으로 압축, 명령어의 마지막 위치는 프로젝트 이름이어야 한다.
+  - zip -r SpringBoot * # 현재 위치의 모든 파일을 해당 이름으로 압축, 명령어의 마지막 위치는 프로젝트 이름이어야 한다.
   - mkdir -p deploy # deploy라는 디렉토리를 TravisCI가 실행중인 위치에서 생성
   - mv SpringBoot.zip deploy/SpringBoot.zip
 
