@@ -1,7 +1,7 @@
 language: java
 jdk:
   - openjdk8
-  -
+
 # The command "./gradlew assemble" failed and exited with 126 during .
 before_install:
   - chmod +x gradlew
