@@ -27,7 +27,7 @@ before_deploy:
   - cd ..
   - mv SpringBoot.zip deploy/SpringBoot.zip
   - cd deploy
-  - ll
+  - ls
   - cd ..
 
 # S3로 파일 업로드 혹은 CodeDeploy로 배포 등 외부 서비스와 연동될 행위들을 선언
